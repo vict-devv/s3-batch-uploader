@@ -5,4 +5,5 @@ const (
 	AwsDefaultProfile string = "default"
 
 	DefaultFolder string = "./"
+	DefaultMimeType string = "binary/octet-stream"
 )
