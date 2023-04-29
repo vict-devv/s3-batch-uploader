@@ -3,6 +3,7 @@ package cmd
 import (
 	"fmt"
 	"os"
+	"strings"
 	"vict-devv/s3-batch-uploader/aws"
 	"vict-devv/s3-batch-uploader/constants"
 
@@ -32,6 +33,10 @@ var rootCmd = &cobra.Command{
 		fmt.Println("Region: ", AwsRegion)
 		fmt.Println("Bucket: ", AwsBucket)
 		fmt.Println("Folder: ", Folder)
+
+		if strings.TrimSpace(AwsBucket) == "" {
+			return fmt.Errorf("bucket must not be empty")
+		}
 
 		sess := aws.NewAWSSession(AwsRegion, AwsProfile)
 
